@@ -1,0 +1,10 @@
+<Consulta>
+    <id>5001</id>
+    <pacienteId>1</pacienteId>
+    <medicoId>200</medicoId>
+    <dataConsulta>2024-12-01</dataConsulta>
+    <especialidade>Cardiologia</especialidade>
+    <status>Agendada</status>
+    <observacoes>Check-up anual</observacoes>
+    <dataRegistro>2024-11-20</dataRegistro>
+</Consulta>
