@@ -1,0 +1,132 @@
+openapi: 3.0.0
+info:
+  title: API de Gestão de Pacientes e Consultas
+  version: 1.0.0
+servers:
+  - url: http://meuservidor.com/api
+paths:
+  /paciente:
+    get:
+      summary: Listar pacientes
+      description: Retorna todos os pacientes cadastrados no sistema.
+      responses:
+        '200':
+          description: Lista de pacientes retornada com sucesso.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paciente'
+    post:
+      summary: Criar paciente
+      description: Adiciona um novo paciente ao sistema.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Paciente'
+      responses:
+        '201':
+          description: Paciente criado com sucesso.
+        '400':
+          description: Erro de validação nos dados.
+
+  /consulta:
+    get:
+      summary: Listar consultas
+      description: Recupera uma lista de consultas cadastradas.
+      responses:
+        '200':
+          description: Lista de consultas retornada com sucesso.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Consulta'
+    post:
+      summary: Criar consulta
+      description: Registra uma nova consulta no sistema.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Consulta'
+      responses:
+        '201':
+          description: Consulta criada com sucesso.
+        '400':
+          description: Erro de validação nos dados enviados.
+
+components:
+  schemas:
+    Paciente:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nome:
+          type: string
+          example: João da Silva
+        dataNascimento:
+          type: string
+          format: date
+          example: 1985-05-20
+        sexo:
+          type: string
+          enum: [masculino, feminino, outro]
+          example: masculino
+        telefone:
+          type: string
+          example: "(11) 98765-4321"
+        email:
+          type: string
+          example: joao.silva@example.com
+        convenio:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 101
+            nome:
+              type: string
+              example: Plano Saúde X
+            dataInicio:
+              type: string
+              example: 2023-01-01
+            dataFim:
+              type: string
+              example: 2024-01-01
+    Consulta:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 5001
+        pacienteId:
+          type: integer
+          example: 1
+        medicoId:
+          type: integer
+          example: 200
+        dataConsulta:
+          type: string
+          format: date
+          example: 2024-12-01
+        especialidade:
+          type: string
+          example: Cardiologia
+        status:
+          type: string
+          example: Agendada
+        observacoes:
+          type: string
+          example: Check-up anual
+        dataRegistro:
+          type: string
+          format: date
+          example: 2024-11-20
