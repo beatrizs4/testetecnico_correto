@@ -1,0 +1,10 @@
+{
+  "id": 5001,
+  "pacienteId": 1,
+  "medicoId": 200,
+  "dataConsulta": "2024-12-01",
+  "especialidade": "Cardiologia",
+  "status": "Agendada",
+  "observacoes": "Check-up anual",
+  "dataRegistro": "2024-11-20"
+}
